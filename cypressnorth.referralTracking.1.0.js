@@ -10,7 +10,7 @@ URLParameterName = "MyParameterName",
 //how many days you want the cookie to be valid for on the users machine
 cookiePersistDays = 14,
 cookiePath = '',    // use '' for default
-cookieDomain = "."+window.location.hostname, // leading . will allow subdomains also to access cookie
+cookieDomain = "."+window.location.hostname, // leading . will allow subdomains to also access cookie
 cookieSecure = true;
 
 /************************ -------------------------- *******************************/
