@@ -9,6 +9,9 @@ cookieName = "MyCookieName";
 URLParameterName = "MyParameterName";
 //how many days you want the cookie to be valid for on the users machine
 cookiePersistDays = 14;
+cookiePath = '',    // use '' for default
+cookieDomain = "."+window.location.hostname, // leading . will allow subdomains also to access cookie
+cookieSecure = true;
 
 /************************ -------------------------- *******************************/
 //RUN ON LOAD
@@ -54,7 +57,14 @@ function createCookie(name, value, days) {
         var expires = "; expires=" + date.toGMTString();
     }
     else var expires = "";
-    document.cookie = name + "=" + value + expires + "; path=/";
+    var cookie_string = name + "=" + value + expires
+    //document.cookie =  + "; path=/";
+    cookie_string += "; path=" + ((cookiePath) ? escape ( cookiePath ) : '/');
+    cookie_string += "; domain=" + ((cookieDomain) ? escape ( cookieDomain ) : window.location.hostname);
+    if ( cookieSecure )
+        cookie_string += "; secure";
+    console.log(cookie_string);
+    document.cookie = cookie_string;
 }
 function readCookie(name) {
     var nameEQ = name + "=";
